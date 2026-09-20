@@ -2,10 +2,9 @@
 
 # OHenrique Optimization — Windows 11
 
-**Manutenção e otimização conservadora em PowerShell para notebooks e desktops.**
+**Otimização e manutenção do Windows em PowerShell.**
 
 ![PowerShell](https://img.shields.io/badge/PowerShell-5.1%2B-5391FE?logo=powershell&logoColor=white)
-![Windows 11](https://img.shields.io/badge/Windows-11-0078D4?logo=windows&logoColor=white)
 ![License](https://img.shields.io/badge/license-MIT-green.svg)
 ![Version](https://img.shields.io/badge/version-1.0.0-blue.svg)
 
@@ -13,83 +12,60 @@
 
 ---
 
-O **OHenrique Optimization** automatiza tarefas de manutenção e alguns ajustes de desempenho usando principalmente ferramentas nativas do Windows. A proposta é ser transparente: nada de “500% mais FPS”, desativação aleatória de serviços ou pacotes obscuros de Registro.
-
-## ✨ Recursos
-
-- interface colorida e progresso por etapas;
-- verificação de Administrador;
-- identificação de Windows, CPU, RAM, GPU e discos;
-- log automático na Área de Trabalho;
-- tentativa de criar ponto de restauração;
-- limpeza de temporários e Limpeza de Disco;
-- DISM `CheckHealth`, `ScanHealth`, `RestoreHealth` e `StartComponentCleanup`;
-- `sfc /scannow`;
-- `chkdsk /scan`;
-- otimização de unidades com `defrag /O`;
-- limpeza do cache DNS;
-- correção do gerenciamento automático do pagefile se estiver desativado;
-- verificação/ativação do Game Mode;
-- modo visual leve opcional;
-- Game DVR opcional;
-- escolha do plano de energia;
-- atualização opcional de aplicativos via Winget;
-- pergunta antes de reiniciar o computador.
 
 ## 🚀 Como usar
 
-1. Baixe `scripts/OHenrique-Optimization-Windows-11.ps1`.
-2. Abra **Windows PowerShell/Terminal como Administrador**.
-3. Execute:
+### 1. Baixe o arquivo principal
+
+👉 **[OHenrique-Optimization-Windows-11.ps1](OHenrique-Optimization-Windows-11.ps1)**
+
+No GitHub, abra o arquivo e use **Download raw file**.
+
+### 2. Abra o PowerShell como Administrador
+
+Pesquise por **PowerShell** ou **Terminal**, clique com o botão direito e escolha **Executar como administrador**.
+
+### 3. Execute o arquivo
+
+Entre na pasta onde ele foi baixado e rode:
 
 ```powershell
 powershell.exe -NoProfile -ExecutionPolicy Bypass -File ".\OHenrique-Optimization-Windows-11.ps1"
 ```
 
-Se a política bloquear scripts:
+Pronto. A ferramenta abre sua própria interface e pergunta quais opções você deseja aplicar.
 
-```powershell
-Set-ExecutionPolicy -Scope Process Bypass
-```
+## 🔧 O que ele faz
 
-## 🛡️ O que o projeto evita
+- limpa arquivos temporários;
+- executa manutenção e reparo com DISM;
+- executa SFC e CHKDSK;
+- otimiza HDD/SSD usando o método apropriado do Windows;
+- limpa o cache DNS;
+- verifica a memória virtual;
+- verifica/ativa o Game Mode;
+- oferece modo visual mais leve;
+- permite desativar Game DVR;
+- permite escolher o plano de energia;
+- pode atualizar aplicativos pelo Winget;
+- cria log da execução na Área de Trabalho.
 
-Por padrão, o script **não** desativa Defender, Windows Update, SysMain, Windows Search ou pagefile; não altera HPET/BCD; não apaga Prefetch indiscriminadamente; e não executa `DISM /ResetBase`.
+## 🛡️ O que ele NÃO faz
 
-## 🧠 Checagens automáticas
+O script não desativa Defender, Windows Update, SysMain, Windows Search ou o arquivo de paginação. Também não aplica tweaks de HPET/BCD, não apaga Prefetch indiscriminadamente e não usa `DISM /ResetBase`.
 
-- **Pagefile:** se `AutomaticManagedPagefile` estiver `False`, tenta retornar para `True`.
-- **Game Mode:** verifica e tenta ativar quando necessário.
-- **HDD/SSD:** usa `defrag <unidade> /O /U /V`, deixando o Windows escolher a otimização adequada à mídia.
-
-## ⚙️ Opções interativas
-
-Você escolhe se deseja limpar a Lixeira, aplicar visual mais leve, desativar Game DVR, alterar o plano de energia, atualizar aplicativos via Winget e reiniciar ao finalizar.
-
-## 📁 Estrutura
+## 📁 Este repositório tem só 3 arquivos
 
 ```text
-.
-├── .github/
-├── docs/
-├── scripts/
-│   └── OHenrique-Optimization-Windows-11.ps1
-├── CHANGELOG.md
-├── CONTRIBUTING.md
-├── DISCLAIMER.md
-├── LICENSE
-├── README.md
-└── SECURITY.md
+README.md
+LICENSE
+OHenrique-Optimization-Windows-11.ps1
 ```
+
+Assim não tem pasta escondendo o arquivo que realmente importa.
 
 ## 📄 Licença
 
-Distribuído sob a **MIT License**. Consulte [LICENSE](LICENSE).
+MIT License — Copyright © 2026 OHenrique.
 
----
-
-<div align="center">
-
-**OHenrique Optimization • v1.0.0**
-
-</div>
+Leia o script antes de executar alterações administrativas em uma máquina importante.
