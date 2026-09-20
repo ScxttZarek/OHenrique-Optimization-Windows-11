@@ -1,0 +1,6 @@
+*.log
+*.tmp
+Thumbs.db
+Desktop.ini
+.vscode/
+.idea/
